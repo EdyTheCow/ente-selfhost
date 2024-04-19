@@ -13,7 +13,7 @@ jobs:
               uses: mr-smithers-excellent/docker-build-push@v6
               with:
                   dockerfile: ente-server-tools/Dockerfile
-                  image: ente-server-tools
+                  image: ghcr.io/edythecow/ente-server-tools
                   registry: ghcr.io
                   enableBuildKit: true
                   tags: latest
