@@ -1,0 +1,56 @@
+services:
+  museum:
+    image: ghcr.io/ente-io/server
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ${DATA_DIR}/museum/logs:/var/logs
+    networks:
+      - internal
+      - ente
+    labels:
+      - "traefik.enable=true"
+      # HTTP
+      - "traefik.http.routers.ente-museum.entrypoints=web"
+      - "traefik.http.routers.ente-museum.rule=Host(`${DOMAIN_MUSEUM}`)"
+      - "traefik.http.routers.ente-museum.middlewares=ente-museum_https"
+      - "traefik.http.middlewares.ente-museum_https.redirectscheme.scheme=https"
+      # HTTPS
+      - "traefik.http.routers.ente-museum_https.entrypoints=websecure"
+      - "traefik.http.routers.ente-museum_https.rule=Host(`${DOMAIN_MUSEUM}`)"
+      - "traefik.http.routers.ente-museum_https.tls=true"
+      - "traefik.http.routers.ente-museum_https.tls.certresolver=letsencrypt"
+      - "traefik.http.services.ente-museum_https.loadbalancer.server.port=8080"
+
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_USER: ${ENTE_DB_USER}
+      POSTGRES_PASSWORD: ${ENTE_DB_PASSWORD}
+      POSTGRES_DB: ${ENTE_DB_NAME}
+    # Wait for postgres to be accept connections before starting museum.
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "-q",
+          "-d",
+          "ente_db",
+          "-U",
+          "pguser"
+        ]
+      interval: 1s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - ${DATA_DIR}/postgres:/var/lib/postgresql/data
+    networks:
+      - internal
+
+networks:
+  ente:
+    external: true
+  internal:
+    external: false

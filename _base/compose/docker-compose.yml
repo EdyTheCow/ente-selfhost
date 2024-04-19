@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  ente:
+    external: true
+
+services:
+
+  traefik:
+    image: traefik:v3.0
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - ente
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DATA_DIR}/traefik/traefik.toml:/etc/traefik/traefik.toml
+      - ${DATA_DIR}/traefik/acme.json:/acme.json
+      - ${DATA_DIR}/traefik/logs:/logs
