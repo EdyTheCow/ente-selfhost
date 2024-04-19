@@ -12,7 +12,7 @@ jobs:
             - name: Build and push
               uses: mr-smithers-excellent/docker-build-push@v6
               with:
-                  dockerfile: ente-server-tools/Dockerfile
+                  dockerfile: images/ente-server-tools/Dockerfile
                   image: ente-server-tools
                   registry: ghcr.io
                   enableBuildKit: true
