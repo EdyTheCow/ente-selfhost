@@ -27,7 +27,4 @@ jobs:
         with:
           context: ente-server-tools/.
           tags: ghcr.io/edythecow/ente-server-tools:latest
-          push: ${{ github.ref == 'refs/heads/master' }}
-
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+          push: true
