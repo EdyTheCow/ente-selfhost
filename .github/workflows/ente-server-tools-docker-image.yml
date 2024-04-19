@@ -1,9 +1,6 @@
-name: Build and Publish
+name: Build and publish Ente server tools
 
-on:
-  push:
-    branches: [master]
-  pull_request:
+on: [push]
 
 jobs:
   build-and-push-docker-image:
