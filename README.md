@@ -1,7 +1,7 @@
 # 📖 About
 Ente.io has recently open-sourced their server (museum) which is a backend for various Ente services such as Photos, Auth, etc. There's currently a lack of documentation for deployment of these services. The documentation that does exist is scattered all over the place. The goal of this guide and configuration is to make the deployment as painless as possible with all of the information needed in one place.
 
-Ente server (museum) is deployed using the official docker image provided by Ente. It is configured to run under Traefik reverse proxy to automatically generate and renew certificates. This means no ports are exposed and all of the traffic flos through Traefik reverse proxy before reaching any of the services. 
+Ente server (museum) is deployed using the official docker image provided by Ente. It is configured to run under Traefik reverse proxy to automatically generate and renew certificates. This means no ports are exposed and all of the traffic flows through Traefik reverse proxy before reaching any of the services. 
 
 Ente photos web is deployed using Cloudflare pages. This guide uses a slightly modified github workflow config from Ente's repository for production deployments. The idea is to replicate Ente's production environment as close as possible. 
 
