@@ -24,7 +24,7 @@ This guide assumes you have a basic knowledge of Linux, Docker and Docker Compos
 Quick overview of directory structure, services and the ideas behind why it is setup how it is. 
 
 ```
-ente-slefhost
+ente-selfhost
 ├── _base
 │   ├── compose
 │   │   ├── docker-compose.yml
