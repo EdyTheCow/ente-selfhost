@@ -1,4 +1,8 @@
-# 📖 About
+# NOTE:
+For anyone reading this, the documentation is probably quite outdated as I ended up using Immich due to a few big limitation Ente has. 
+The web deployment side of documentation might be still useful!
+
+📖 About
 Ente.io has recently open-sourced their server (museum) which is a backend for various Ente services such as Photos, Auth, etc. There's currently a lack of documentation for deployment of these services. The documentation that does exist is scattered all over the place. The goal of this guide and configuration is to make the deployment as painless as possible with all of the information needed in one place.
 
 Ente server (museum) is deployed using the official docker image provided by Ente. It is configured to run under Traefik reverse proxy to automatically generate and renew certificates. This means no ports are exposed and all of the traffic flows through Traefik reverse proxy before reaching any of the services. 
