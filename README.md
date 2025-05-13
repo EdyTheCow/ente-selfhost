@@ -1,6 +1,5 @@
 <b>NOTE:</b>
-For anyone reading this, the documentation is probably quite outdated as I ended up using Immich due to a few big limitation Ente has. 
-The web deployment side of documentation might be still useful!
+For anyone reading this, the documentation is probably quite outdated as I ended up using Immich due to a few big limitations Ente has. The web deployment side of documentation might be still useful!
 
 # 📖 About
 
